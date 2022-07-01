@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0%;
+    background-color: white;
+    position: relative;
+    /* font-style: white; */
+    background-image: url('https://source.unsplash.com/random/?quite,landscape');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.box {
+    overflow: hidden;
+    padding: 3em;
+    border-radius: 30px;
+    width: 64.5%;
+    max-width: 900px;
+    height: 50%;
+    box-sizing: border-box;
+    margin: 0%;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-weight: 200;
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+}
+
+#vid {
+    margin: 0%;
+    background-color: white;
+    position: fixed;
+    bottom: 25%;
+    border-radius: 30px;
+    left: 186px;
+    height: 375px;
+    transform: translate(-50, -50);
+    background-size: cover;
+    background-repeat: no-repeat;
+}

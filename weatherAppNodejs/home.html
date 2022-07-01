@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <style type="text/css" media="all">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0%;
+            background-color: white;
+            position: relative;
+            /* font-style: white; */
+            background-image: url('https://source.unsplash.com/random/?quite,landscape');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        .box {
+            overflow: hidden;
+            padding: 3em;
+            border-radius: 30px;
+            width: 64.5%;
+            max-width: 900px;
+            height: 50%;
+            box-sizing: border-box;
+            margin: 0%;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-weight: 200;
+            text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+            background: rgba(0, 0, 0, 0.25);
+        }
+        
+        #vid {
+            margin: 0%;
+            background-color: white;
+            position: fixed;
+            bottom: 25%;
+            border-radius: 30px;
+            left: 186px;
+            z-index: -1;
+            height: 375px;
+            transform: translate(-50, -50);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url('https://source.unsplash.com/random/?quite,landscape');
+        }
+    </style>
+    <title>Weather App</title>
+</head>
+
+<body>
+    <!-- <video src="vid1.mp4"muted loop autoplay></video> -->
+
+
+
+    <div class="box">
+        <div class="wave -one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+
+
+        <div id="weathercon">
+            <i class="fas fa-sun" style="color : #eccc68"></i></div>
+
+        <div class="info">
+            <h2 class="location"><i class="fas fa-street-view"></i>{%location%} , {%country%}</h2>
+            <p id="date">WED | OCT 23 | 10 : 49AM</p>
+            <br>
+            <br>
+            <h1 class="temp">{%tempval%}&deg;F</h1>
+            <h3 class="tempmin_max">Min {%tempmin%}&deg;F | Max {%tempmax%}&deg;F</h3>
+        </div>
+        <video id="vid" src="vid1.mp4" type="video/mp4" muted autoplay loop></video>
+    </div>
+
+
+    <script>
+        const curDate = document.getElementById("date");
+        let weathercon = document.getElementById("weathercon");
+        const tempStatus = "{%Status_Code%}";
+
+        if (tempStatus = "Sunny") {
+            weathercon.innerHTML = "< i class = 'fas fa-sun'style = 'color : #eccc68' > </i>";
+        } else if (tempStatus = "Clouds") {
+            weathercon.innerHTML = "< i class = 'fas fa-cloud'style = 'color : #dfe4ea' > </i>";
+        } else if (tempStatus = "Rainy") {
+            weathercon.innerHTML = "< i class = 'fas fa-cloud-rain'style = 'color : #a4b0be' > </i>";
+        } else {
+            weathercon.innerHTML = "< i class = 'fas fa-cloud'style = 'color : #44c3de' > </i>";
+        }
+
+
+        const getCurrentDay = () => {
+            const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+
+            let currentTime = new Date();
+            let day = weekday[currentTime.getDay()];
+            return day;
+
+        };
+
+        const getCurrentTime = () => {
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var now = new Date();
+            var month = months[now.getMonth()];
+            var date = now.getDate();
+
+            let hours = now.getHours();
+            let mins = now.getMinutes();
+
+            let perios = "AM";
+            if (hours > 11) {
+                perios = "PM";
+                if (hours > 12) hours -= 12;
+            }
+            if (mins < 10) {
+                mins = "0" + mins;
+            }
+
+            return `${month}${date} | ${hours}:${mins}${perios}`;
+        };
+        curDate.innerHTML = getCurrentDay() + " | " + getCurrentTime();
+    </script>
+
+</body>
+
+</html>
